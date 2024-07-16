@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <form id="registrationForm" action="/submit-form" method="post">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <span id="emailError"></span>
+        
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" >
+        <span id="ageError"></span>
+
+        <label for="message">message:</label>
+        <textarea name="message" id="message"></textarea>
+        <span id="messageError"></span>
+        <input type="submit" id="submit" name="submit" value="submit">
+
+
+
+     </form>
+     <script>
+        const form = document.getElementById("registrationForm");
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email= document.getElementById("email");
+            const emailError = document.getElementById("emailError");
+
+            if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email.value)) {
+                 emailError.textContent = 'Please enter a valid email address.';
+                 return;
+           } else {
+                 emailError.textContent = '';
+           }
+
+
+           const age = document.getElementById("age");
+           const ageError = document.getElementById("ageError");
+
+           if ( age.value < 18 || age.value > 99) {
+              ageError.textContent = 'please enter a number between 18 an 99'
+           } else {
+            ageError.textContent = ''
+           }
+
+           const message = document.getElementById("message");
+
+
+           form.submit();
+        });
+
+        
+
+     </script>
+</body>
+</html>
