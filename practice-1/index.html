@@ -50,6 +50,19 @@
            }
 
            const message = document.getElementById("message");
+           const words = message.value.trim().split(' /\s+/');
+           const wordCount = words.length;
+           const  charcter = message.value.length;
+           const messageError = document.getElementById("messageError");
+
+           if (wordCount > 100) {
+              messageError.textContent = "Message cannot exceed 100 characters"
+           }else if (character > 500) {
+               messageError.textContent = "Characters cannot exceed 500 characters"
+           } else {
+            messageError.textContent = ''
+           }
+
 
 
            form.submit();
